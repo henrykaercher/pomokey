@@ -2,7 +2,7 @@
 #include "timer.h"
 
 int main(void){
-	printf("Hi\n");
-	timer();
+	int status = FOCUS;
+	timer(&status);
 	return 0;
 }

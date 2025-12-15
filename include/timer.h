@@ -2,11 +2,11 @@
 #define TIMER_H
 
 //IDLE, FOCUS, BREAK, LONG_BREAK
-#define IDLE 0;
-#define FOCUS 1;
-#define BREAK 2;
-#define LONG_BREAK 3;
+#define IDLE 0
+#define FOCUS 1
+#define BREAK 2
+#define LONG_BREAK 3
 
-void timer();
+void timer(int *status);
 
 #endif
