@@ -1,0 +1,193 @@
+POMODORO PROJECT — TODO + TIME ESTIMATE
+=====================================
+
+Objetivo:
+Criar um aplicativo Pomodoro desktop em C, com raylib/raygui,
+multiplataforma (Windows + Linux), com UI gráfica, áudio, assets próprios
+(arte + música) e escopo fechado, finalizável em ~2 semanas.
+Projeto servirá como portfólio técnico e artístico.
+
+--------------------------------------------------
+REGRAS DO MÉTODO POMODORO
+--------------------------------------------------
+
+1. O ciclo básico consiste em:
+   - Período de foco (work)
+   - Pausa curta (short break)
+
+2. Tempos padrão recomendados:
+   - Foco: 25 minutos
+   - Pausa curta: 5 minutos
+   - Pausa longa: 15 minutos
+
+3. Após 4 ciclos de foco consecutivos:
+   - Executa-se uma pausa longa
+   - O contador de ciclos é resetado
+
+4. Durante o período de foco:
+   - O estado é exclusivo (não pode virar pausa sem reset ou término)
+   - O tempo é contado de forma contínua
+
+5. O timer deve:
+   - Usar clock monotônico (não depende do horário do sistema)
+   - Permitir pause e resume
+   - Permitir reset manual
+
+6. Alertas sonoros:
+   - Início do foco
+   - Fim do foco
+   - Fim da pausa
+
+7. Configurações devem persistir entre execuções.
+
+--------------------------------------------------
+ESCOPO FUNCIONAL (FECHADO)
+--------------------------------------------------
+
+Telas:
+- Tela 1: Configuração
+- Tela 2: Execução do Pomodoro
+
+Funcionalidades:
+- Configurar tempos (foco / pausa / pausa longa)
+- Selecionar imagem de fundo
+- Selecionar música de fundo
+- Importar assets personalizados (imagem/áudio)
+- Executar ciclo Pomodoro completo
+- Áudio de fundo + alertas
+
+Não incluir:
+- Estatísticas avançadas
+- Histórico de produtividade
+- Login
+- Notificações de sistema
+- Mais de 2 telas
+
+--------------------------------------------------
+LISTA DE TAREFAS + ESTIMATIVA
+--------------------------------------------------
+
+[1] Planejamento mínimo
+    - Definir tempos padrão
+    - Definir resolução da UI
+    - Definir formato do arquivo de config (JSON)
+    Tempo estimado: 0.5 dia
+
+[2] Core do Timer (FSM)
+    - Estados: IDLE, FOCUS, BREAK, LONG_BREAK
+    - Contagem regressiva com clock monotônico
+    - Pause / Resume / Reset
+    - Transições explícitas
+    Arquivos: timer.h / timer.c
+    Tempo estimado: 1.5 dias
+
+[3] Camada de Plataforma (Windows + Linux)
+    - Clock monotônico
+    - Sleep em milissegundos
+    - Diretório de configuração por OS
+    Arquivos:
+      platform.h
+      platform_win.c
+      platform_unix.c
+    Tempo estimado: 1 dia
+
+[4] Testes do Timer
+    - Testar transições de estado
+    - Testar avanço de tempo simulado
+    - Sem uso de sleep real
+    Tempo estimado: 0.5 dia
+
+[5] Sistema de Configuração
+    - Carregar config JSON
+    - Salvar escolhas do usuário
+    - Caminhos portáveis
+    Arquivos: config.h / config.c
+    Tempo estimado: 1 dia
+
+[6] Sistema de Áudio
+    - Música de fundo (loop)
+    - Sons de alerta
+    - Importar áudio do usuário
+    - Play / stop / troca dinâmica
+    Tempo estimado: 1 dia
+
+[7] Interface Gráfica (raylib + raygui)
+    Tela de Configuração:
+      - Ajuste de tempos
+      - Seleção de fundo
+      - Seleção de música
+    Tela de Execução:
+      - Relógio central
+      - Estado atual
+      - Controles básicos
+    Tempo estimado: 2 dias
+
+[8] Integração Geral
+    - Core ↔ UI
+    - Core ↔ Áudio
+    - Config ↔ UI
+    - Estados consistentes
+    Tempo estimado: 1 dia
+
+--------------------------------------------------
+PARTE ARTÍSTICA (PORTFÓLIO)
+--------------------------------------------------
+
+[9] Artes de Fundo (2 imagens)
+    - Fundo A: foco (mais sóbrio)
+    - Fundo B: pausa (mais relaxado)
+    Formato: PNG
+    Tempo estimado: 1.5 dias
+
+[10] Artes do Relógio (2 peças)
+     - Relógio A: foco
+     - Relógio B: pausa
+     Tempo estimado: 1 dia
+
+[11] Músicas de Fundo (2 faixas)
+     - Faixa A: foco (loop suave)
+     - Faixa B: pausa (mais leve)
+     Formato: WAV ou OGG
+     Tempo estimado: 2 dias
+
+--------------------------------------------------
+FINALIZAÇÃO
+--------------------------------------------------
+
+[12] Polimento Final + Documentação
+     - Limpar warnings
+     - Garantir build Windows + Linux
+     - README simples (uso + build)
+     - Screenshot da aplicação
+     Tempo estimado: 1 dia
+
+--------------------------------------------------
+CRITÉRIOS DE CORTE (ANTI-OVERENGINEERING)
+--------------------------------------------------
+
+- Se algo atrasar:
+  - NÃO adicionar novas features
+  - NÃO refinar UI excessivamente
+  - NÃO expandir escopo
+
+- Priorizar:
+  - Core funcional
+  - Ciclo Pomodoro correto
+  - Build estável
+  - Produto finalizável
+
+--------------------------------------------------
+RESUMO DE TEMPO
+--------------------------------------------------
+
+Engenharia: ~10 dias
+Arte:       ~4–5 dias
+Total:      ~14 dias
+
+--------------------------------------------------
+OBSERVAÇÃO FINAL
+--------------------------------------------------
+
+Este projeto é uma inauguração de portfólio.
+Ele deve ser pequeno, bem feito e finalizado.
+Após a conclusão, o foco retorna ao projeto maior.
