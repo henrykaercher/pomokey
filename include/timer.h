@@ -7,6 +7,6 @@
 #define BREAK 2
 #define LONG_BREAK 3
 
-void timer(int *status);
+void timer(int *status, int *s_counter, int *m_counter);
 
 #endif
