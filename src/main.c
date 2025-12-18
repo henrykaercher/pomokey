@@ -3,11 +3,10 @@
 //#define RAYGUI_IMPLEMENTATION
 //#include "raygui.h"
 #include "timer.h"
+#include "ui.h"
 
 int main(void){
-	int status = FOCUS;
-	int s_counter = 59;
-	int m_counter = 25;
+	CurrentPage current_page;
 
 	InitWindow(800, 600, "PomoKey");
 	SetExitKey(0);
@@ -16,13 +15,8 @@ int main(void){
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
 
 	while(!WindowShouldClose()){
-		timer(&status, &s_counter, &m_counter);
-
 		BeginDrawing();
-		ClearBackground(DARKGRAY);
-		char str[16];
-		sprintf(str, "%02d:%02d", m_counter, s_counter);
-		DrawText(str, 500, 400, 60, BLACK);
+		DrawUI(&current_page);
 		EndDrawing();
 	}
 
