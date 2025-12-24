@@ -5,16 +5,25 @@
 #include "ui.h"
 #include "timer.h"
 
-void DrawUI(CurrentPage *current_page){
-	static Status status = FOCUS;
-	static int s_counter = 59;
-	static int m_counter = 25;
-	static int b_counter = 0;
+static Status ui_status = IDLE;
+static int ui_minutes = 20;
 
+Status* ui_get_status(void) {
+    return &ui_status;
+}
+
+int ui_get_minutes(void) {
+    return ui_minutes;
+}
+
+void DrawUI(){
 	ClearBackground(DARKGRAY);
+	draw_timer();
 
-	control_timer(&status, &s_counter, &m_counter, &b_counter);
-	char str[16];
-	sprintf(str, "%02d:%02d", m_counter, s_counter);
-	DrawText(str, 500, 400, 60, BLACK);
+	if(GuiButton((Rectangle){ 40, 160, 140, 30 },"Begin")){
+		ui_status = FOCUS;
+		ui_minutes = 1;
+	}
+
+	control_timer(ui_get_status(), ui_get_minutes());
 }

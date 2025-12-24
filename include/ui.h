@@ -6,6 +6,6 @@ typedef enum{
 	CLOCK
 }CurrentPage;
 
-void DrawUI(CurrentPage *current_page);
+void DrawUI();
 
 #endif

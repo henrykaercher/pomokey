@@ -1,7 +1,6 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-//IDLE, FOCUS, BREAK, LONG_BREAK
 typedef enum{
 	IDLE,
 	FOCUS,
@@ -9,6 +8,8 @@ typedef enum{
 	LONG_BREAK
 }Status;
 
-void control_timer(Status *status, int *s_counter, int *m_counter, int *b_counter);
+void running_timer();
+void control_timer(Status *status, int minutes);
+void draw_timer();
 
 #endif
