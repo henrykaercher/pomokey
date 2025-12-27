@@ -8,7 +8,7 @@ typedef enum{
 	LONG_BREAK
 }Status;
 
-void running_timer();
+bool running_timer();
 void control_timer(Status *status, int minutes);
 void draw_timer();
 

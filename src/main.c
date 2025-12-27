@@ -15,6 +15,7 @@ int main(void){
 	while(!WindowShouldClose()){
 		BeginDrawing();
 		DrawUI();
+		draw_timer();
 		EndDrawing();
 	}
 
