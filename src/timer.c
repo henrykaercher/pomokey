@@ -2,6 +2,7 @@
 #include "timer.h"
 #include "raylib.h"
 #include "ui.h"
+#include "sounds.h"
 
 static int s_counter = 0;
 static int m_counter = 20;
@@ -25,7 +26,7 @@ bool running_timer(void){
             }
         }else{
             //s_counter--;
-			s_counter -= 35;
+			s_counter --;
         }
     }
     return false;
@@ -39,7 +40,7 @@ void control_timer(Status *status, int minutes){
 
         switch(current_status){
             case IDLE:
-                m_counter = 20;
+                m_counter = 25;
                 s_counter = 0;
                 break;
 
@@ -70,11 +71,14 @@ void control_timer(Status *status, int minutes){
 				if(break_counter > 3){
 					*status = LONG_BREAK;
 					break_counter = 0;
+					play_sound(status);
 				}else{
 					*status = BREAK;
+					play_sound(status);
 				}
             } else {
                 *status = FOCUS;
+				play_sound(status);
             }
         }
     }
