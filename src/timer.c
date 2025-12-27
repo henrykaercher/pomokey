@@ -24,7 +24,8 @@ bool running_timer(void){
                 m_counter--;
             }
         }else{
-            s_counter--;
+            //s_counter--;
+			s_counter -= 35;
         }
     }
     return false;
@@ -66,7 +67,12 @@ void control_timer(Status *status, int minutes){
         if(running_timer()){
             if(current_status == FOCUS){
                 break_counter++;
-                *status = BREAK;
+				if(break_counter > 3){
+					*status = LONG_BREAK;
+					break_counter = 0;
+				}else{
+					*status = BREAK;
+				}
             } else {
                 *status = FOCUS;
             }

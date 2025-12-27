@@ -20,7 +20,7 @@ void DrawUI(){
 	if(GuiButton((Rectangle){ 40, 160, 140, 30 },"Begin")){
 		if(ui_status == IDLE){
 			ui_status = FOCUS;
-			ui_minutes = 1;
+			ui_minutes = 10;
 		}
 	}
 
