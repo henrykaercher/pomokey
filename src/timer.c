@@ -5,12 +5,12 @@
 #include "sounds.h"
 
 static int s_counter = 0;
-static int m_counter = 20;
+static int m_counter = 25;
 
 static Status current_status = IDLE;
 static int break_counter = 0;
 
-bool running_timer(void){
+bool running_timer(){
     static float accumulator = 0.0f;
     accumulator += GetFrameTime();
 
@@ -25,7 +25,6 @@ bool running_timer(void){
                 m_counter--;
             }
         }else{
-            //s_counter--;
 			s_counter --;
         }
     }
@@ -42,21 +41,25 @@ void control_timer(Status *status, int minutes){
             case IDLE:
                 m_counter = 25;
                 s_counter = 0;
+				play_sound(status);
                 break;
 
             case FOCUS:
                 m_counter = minutes;
                 s_counter = 0;
+				play_sound(status);
                 break;
 
             case BREAK:
                 m_counter = (int)(minutes * 0.2f);
                 s_counter = 0;
+				play_sound(status);
                 break;
 
             case LONG_BREAK:
-                m_counter = (int)(minutes * 1.2f);
+                m_counter = (int)(minutes * 0.6f);
                 s_counter = 0;
+				play_sound(status);
                 break;
         }
     }
@@ -71,14 +74,11 @@ void control_timer(Status *status, int minutes){
 				if(break_counter > 3){
 					*status = LONG_BREAK;
 					break_counter = 0;
-					play_sound(status);
 				}else{
 					*status = BREAK;
-					play_sound(status);
 				}
             } else {
                 *status = FOCUS;
-				play_sound(status);
             }
         }
     }
@@ -87,6 +87,6 @@ void control_timer(Status *status, int minutes){
 void draw_timer(){
     char str[16];
     sprintf(str, "%02d:%02d", m_counter, s_counter);
-    DrawText(str, GetScreenWidth() / 2, GetScreenHeight() / 2, 60, BLACK);
+    DrawText(str, GetScreenWidth() / 2 - 110, GetScreenHeight() / 2 - 40, 70, BLACK);
 }
 

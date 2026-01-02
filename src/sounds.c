@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "raylib.h"
 #include "timer.h"
 
@@ -7,9 +6,15 @@ static Sound snd_break;
 static Sound snd_long_break;
 
 void load_sounds(){
-	snd_focus = LoadSound("focus.wav");
-    snd_break = LoadSound("break.wav");
-    snd_long_break = LoadSound("long_break.wav");
+	//TODO: diferent sounds for each one
+	snd_focus = LoadSound("assets/pomo_break_bell.wav");
+    snd_break = LoadSound("assets/pomo_break_bell.wav");
+    snd_long_break = LoadSound("sounds/pomo_break_bell.wav");
+
+	//TODO: themes, volume control and options in general
+	SetSoundVolume(snd_focus, 6.0f);
+	SetSoundVolume(snd_break, 6.0f);
+	SetSoundVolume(snd_long_break, 6.0f);
 }
 
 void unload_sounds(){
