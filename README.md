@@ -4,11 +4,11 @@ Simple Pomodoro timer built with raylib.
 
 ## Compiling
 Simply use the Makefile:
-```
+```bash
 make
 ```
 Or if you want to compile and run:
-```
+```bash
 make run
 ```
 
