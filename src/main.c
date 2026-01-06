@@ -21,15 +21,17 @@ int main(void){
 	InitAudioDevice();
 	//TraceLog(LOG_INFO, "Audio device ready: %d", IsAudioDeviceReady());
 	load_sounds();
+	load_background();
 
 	while(!WindowShouldClose()){
 		BeginDrawing();
+		update_background();
 		DrawUI();
-		//TODO: changeable background image/video/gif
 		draw_timer();
 		EndDrawing();
 	}
 	unload_sounds();
+	unload_background();
 	CloseAudioDevice();
 	CloseWindow();
 
